@@ -40,7 +40,7 @@ ggplot(africa) +
   theme(text = element_text(family = "Georgia"), )
 
 
-# Map deforestation 
+# Map of deforestation Africa
 
 forest <- readxl::read_excel("data/FRA_africa.xlsx")
 
@@ -51,7 +51,7 @@ forest <- forest %>%
   rename(name = country) %>% 
   distinct()
 
-forest$name <- iconv(forest$name, from = "UTF-8", to = "ASCII//TRANSLIT") # take accents of the country names
+forest$name <- iconv(forest$name, from = "UTF-8", to = "ASCII//TRANSLIT") # take accents off the country names
 
 africa_f <-  world %>%
   filter(continent == "Africa", !is.na(iso_a2)) %>%
