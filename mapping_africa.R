@@ -49,6 +49,7 @@ library(RColorBrewer)
 forest <- forest %>% 
   gather(year_range, change_rate, `n1990_2015`:`n2000_2015`) %>%
   rename(name = country) %>% 
+  mutate(change_rate = as.numeric(change_rate)) %>% 
   distinct()
 
 forest$name <- iconv(forest$name, from = "UTF-8", to = "ASCII//TRANSLIT") # take accents off the country names
@@ -70,6 +71,6 @@ ggplot() +
   scale_fill_viridis_d(option = "D", na.value = "#D5D5D3") +
   theme_minimal() +
   labs(title = "Rate of change in forest area coverage across Africa between 1990-2015") +
-  theme(text = element_text(family = "Georgia"))
+  theme(text = element_text(family = "Verdana Pro"))
 
 
